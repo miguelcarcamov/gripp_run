@@ -34,8 +34,7 @@ jdl +=  'Parameters = "LFN:/skatelescope.eu/user/m/miguel.carcamo/first/meerkat/
 jdl += 'Platform = "EL7";\n'
 jdl += 'Tags = "8Processors";\n'
 
-#jdl += 'Site = "LCG.SARA-MATRIX.nl";\n'
-#jdl += 'Platform = "EL7";\n'
+jdl += 'Site = "LCG.UKI-NORTHGRID-MAN-HEP.uk";\n'
 #jdl += 'SmpGranularity = 6;\n'
 #jdl += 'CPUNumber = 6;\n'
 #jdl += 'OutputSE = "SARA-MATRIX-disk";\n'
