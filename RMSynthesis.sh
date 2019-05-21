@@ -18,6 +18,9 @@ echo "Running prmon"
 echo "Let's see what's in here"
 ls -lah
 
-singularity exec --cleanenv -B $PWD -C shub://miguelcarcamov/container_docker:hpc bash run.sh
+echo "Let's see how many processors our machine has"
+lscpu | grep -E '^Thread|^Core|^Socket|^CPU\('
+
+singularity exec --cleanenv --home $PWD -B $PWD -C shub://miguelcarcamov/container_docker:hpc bash run.sh
 mv prmon.txt prmon.txt
 ls -ltrh
