@@ -32,7 +32,7 @@ jdl +=  'Parameters = "LFN:/skatelescope.eu/user/m/miguel.carcamo/first/meerkat/
 #jdl += "ParameterStep=1;\n"
 
 jdl += 'Platform = "EL7";\n'
-jdl += 'Tags = "24Processors";\n'
+jdl += 'Tags = "8Processors";\n'
 
 jdl += 'Site = "LCG.UKI-NORTHGRID-MAN-HEP.uk";\n'
 #jdl += 'SmpGranularity = 6;\n'
