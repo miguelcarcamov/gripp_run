@@ -62,7 +62,7 @@ jdl += 'InputSandbox = { "RMSynthesis.sh","run.sh" };\n'
 # %s is the parameter taken from the list given in Parameters = { ... }
 #jdl += 'InputData = { "LFN:/skatelescope.eu/user/r/rohini.joshi/PulsarTestVectorGeneration/noise'+timeSamples+'.fil"};\n'
 #jdl += 'InputData = "%s";\n'
-jdl = 'InputData = "LFN:/skatelescope.eu/user/m/miguel.carcamo/first/meerkat/HPC_data.tar.gz";\n'
+jdl = 'InputData = "LFN:/skatelescope.eu/user/m/miguel.carcamo/first/HPC_data.tar.gz";\n'
 # Direct stdout and stderr to files
 jdl += 'StdOutput = "StdOut";\n'
 jdl += 'StdError = "StdErr";\n'
