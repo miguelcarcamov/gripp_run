@@ -8,7 +8,7 @@ printenv
 echo "========="
 singularity --version
 
-mkdir prmon && tar -xzvf prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz -C prmon --strip-components 1
+mkdir prmon && tar xf prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz -C prmon --strip-components 1
 tar -xzcf HPC_data.tar.gz
 ./prmon/bin/prmon -p $$ -i 10 &
 
