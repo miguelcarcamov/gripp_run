@@ -14,6 +14,6 @@ tar -xzvf HPC_data.tar.gz
 
 cd meerkat
 
-singularity -d  exec  --cleanenv --home $PWD:/srv --pwd /srv -C  shub://miguelcarcamov/container_docker:hpc './run.sh'
+singularity -d  exec  --cleanenv --home $PWD --pwd ./ -C  shub://miguelcarcamov/container_docker:hpc './run.sh'
 mv prmon.txt prmon.txt
 ls -ltrh
