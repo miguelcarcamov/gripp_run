@@ -27,7 +27,7 @@ jdl += 'JobName = "CS Faraday Rotation Measurement Reconstruction";\n'
 #				"LFN:/skatelescope.eu/user/r/rohini.joshi/GOODSN581359/PrefactorRunLogs/log_7599139.tar",
 #				"LFN:/skatelescope.eu/user/r/rohini.joshi/GOODSN581359/PrefactorRunLogs/log_7599140.tar",
 #				"LFN:/skatelescope.eu/user/r/rohini.joshi/GOODSN581359/PrefactorRunLogs/log_7599149.tar" };\n"""
-jdl += "Parameters = LFN:/skatelescope.eu/user/m/miguel.carcamo/first/meerkat/HPC_data.tar.gz;\n"
+jdl +=  'Parameters = "LFN:/skatelescope.eu/user/m/miguel.carcamo/first/meerkat/HPC_data.tar.gz";\n'
 #jdl += "ParameterStart=1;\n"
 #jdl += "ParameterStep=1;\n"
 
@@ -61,13 +61,13 @@ jdl += 'InputSandbox = { "RMSynthesis.sh","run.sh" };\n'
 # Tell DIRAC where to get your big input data files from
 # %s is the parameter taken from the list given in Parameters = { ... }
 #jdl += 'InputData = { "LFN:/skatelescope.eu/user/r/rohini.joshi/PulsarTestVectorGeneration/noise'+timeSamples+'.fil"};\n'
-jdl += 'InputData = %s\n'
+jdl += 'InputData = "%s";\n'
 # Direct stdout and stderr to files
-jdl += 'StdOutput = "StdOut";\n';
-jdl += 'StdError = "StdErr";\n';
+jdl += 'StdOutput = "StdOut";\n'
+jdl += 'StdError = "StdErr";\n'
 
 # Small files can be put in the output sandbox
-jdl += 'OutputSandbox = {"StdOut", "StdErr"};\n'
+jdl += 'OutputSandbox = {"StdOut", "StdErr", "outputtxt.txt", "prmon.txt"};\n'
 
 # Files to be saved to your grid storage area in case they are large
 # %j is the unique DIRAC Job ID number. 
