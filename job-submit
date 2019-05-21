@@ -55,7 +55,7 @@ jdl += 'Arguments = "%j %n %s";\n'
 
 # Send the script you want to run (in this directory where you run man-job-submit
 # or give the full path to it)
-jdl += 'InputSandbox = { "RMSynthesis.sh","run.sh" };\n'
+jdl += 'InputSandbox = {"RMSynthesis.sh","run.sh","prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz"};\n'
 
 # Tell DIRAC where to get your big input data files from
 # %s is the parameter taken from the list given in Parameters = { ... }
