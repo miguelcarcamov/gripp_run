@@ -15,14 +15,20 @@ tar -xzvf HPC_data.tar.gz
 echo "Running prmon"
 ./prmon/bin/prmon -p $$ -i 10 &
 
+echo "Let's see in what path are we"
+echo $PWD
+
 echo "Let's see what's in here"
 ls -lah
 
 echo "Let's see how many processors our machine has"
 lscpu | grep -E '^Thread|^Core|^Socket|^CPU\('
 
+echo "Lets create a tmp folder to keep temporal files"
+mkdir tmp
+
 echo "Ok! Let's run the container"
-singularity exec --cleanenv -H $PWD:/srv -B $PWD:/srv -C shub://miguelcarcamov/container_docker:hpc bash run.sh
+singularity exec --cleanenv -H $PWD:/srv -B $PWD:/srv -W $PWD:/srv/tmp -C shub://miguelcarcamov/container_docker:hpc bash run.sh
 
 mv prmon.txt prmon.txt
 ls -ltrh
