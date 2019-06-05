@@ -8,6 +8,11 @@ printenv
 echo "========="
 singularity --version
 
+echo "Printing parameters"
+echo $0
+echo $1
+echo $2
+
 echo "Extracting Process Monitor - This is to monitor the processes that we will run"
 mkdir prmon && tar xf prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz -C prmon --strip-components 1
 echo "Extracting our dataset. This contains the Meerkat Simulated data with 10000 sources in a 2048x2048 image"
@@ -15,14 +20,24 @@ tar -xzvf HPC_data.tar.gz
 echo "Running prmon"
 ./prmon/bin/prmon -p $$ -i 10 &
 
+echo "Let's see in what path are we"
+echo $PWD
+
 echo "Let's see what's in here"
 ls -lah
 
 echo "Let's see how many processors our machine has"
 lscpu | grep -E '^Thread|^Core|^Socket|^CPU\('
 
-echo "Ok! Let's run the container"
-singularity exec --cleanenv -H $PWD:/srv -B $PWD:/srv -C shub://miguelcarcamov/container_docker:hpc bash run.sh
+echo "Lets create a tmp folder to keep temporal files"
+mkdir tmp
 
-mv prmon.txt prmon.txt
+echo "Lets create a folder to save the results"
+result_string=results_experiment_$2
+mkdir -p $result_string
+
+echo "Ok! Let's run the container"
+singularity exec --cleanenv -H $PWD:/srv -B $PWD:/srv -W $PWD:/srv/tmp -C shub://miguelcarcamov/container_docker:hpc bash run2.sh $1 $2 $result_string
+
+mv prmon.txt prmon$1.txt
 ls -ltrh
