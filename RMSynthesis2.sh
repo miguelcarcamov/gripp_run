@@ -10,8 +10,10 @@ singularity --version
 
 echo "Printing parameters"
 echo $0
-echo $1
-echo $2
+echo $1 #nprocs
+echo $2 #id_start
+echo $3 #id_end
+echo $4 #experiment
 
 echo "Extracting Process Monitor - This is to monitor the processes that we will run"
 mkdir prmon && tar xf prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz -C prmon --strip-components 1
@@ -33,11 +35,11 @@ echo "Lets create a tmp folder to keep temporal files"
 mkdir tmp
 
 echo "Lets create a folder to save the results"
-result_string=results_experiment_$2
+result_string=results_experiment_$4/
 mkdir -p $result_string
 
 echo "Ok! Let's run the container"
-singularity exec --cleanenv -H $PWD:/srv -B $PWD:/srv -W $PWD:/srv/tmp -C shub://miguelcarcamov/container_docker:hpc bash run2.sh $1 $2 $result_string
+singularity exec --cleanenv -H $PWD:/srv -B $PWD:/srv -W $PWD:/srv/tmp -C shub://miguelcarcamov/container_docker:hpc bash run2.sh $1 $2 $3 $4 $result_string
 
-mv prmon.txt prmon$1.txt
+mv prmon.txt prmon$2_$3.txt
 ls -ltrh

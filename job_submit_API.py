@@ -5,7 +5,7 @@ Created on Wed May 22 22:18:54 2019
 
 @author: miguel
 """
-
+import sys
 from DIRAC.Core.Base import Script
 Script.parseCommandLine()
 
@@ -17,17 +17,20 @@ j = Job(stdout='StdOut', stderr='StdErr')
 M = sys.argv[1]
 N = sys.argv[2]
 expmnt = sys.argv[3] #dataset_normal or dataset_midfreq
+nprocs = int(sys.argv[4])
 total_pixels = M*N
 
 lfn = 'LFN:/skatelescope.eu/user/m/miguel.carcamo/'
 lfn_output = lfn + 'second/results_experiment_'+str(expmnt)
-for i in range(total_pixels)
+for i in range(0,total_pixels, nprocs):
+    id_start = i
+    id_end = i+nprocs
     dirac = Dirac()
-    j.setName('CS Faraday Rotation Measurement Reconstruction - Pixel '+str(i))
+    j.setName('CS Faraday Rotation Measurement Reconstruction - Pixels from '+str(id_start)+' to '+str(id_end))
     j.setPlatform('EL7')
-    j.setTag( ['1Processors'])
+    j.setTag( [str(nprocs)+'Processors'])
     j.setDestination('LCG.UKI-NORTHGRID-MAN-HEP.uk')
-    j.setExecutable('RMSynthesis2.sh', arguments=str(i)+' '+str(expmnt))
+    j.setExecutable('RMSynthesis2.sh', arguments=str(nprocs)+' '+str(id_start)+' '+str(id_end)+' '+str(expmnt))
     # Input data
     j.setInputData([lfn + 'second/HPC_data.tar.gz'])
     j.setInputSandbox(['RMSynthesis2.sh','run2.sh','prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz'])
@@ -39,6 +42,6 @@ for i in range(total_pixels)
     except:
         print 'Failed to get DIRAC username. No proxy set up?'
         sys.exit(1)
-    j.setJobGroup(diracUsername+'rmsynthesis_byone')
+    j.setJobGroup(diracUsername+'_rmsynthesis_by'+str(nprocs))
     jobID = dirac.submitJob(j)
     print 'Submission Result: ',jobID
