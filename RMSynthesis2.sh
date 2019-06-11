@@ -18,7 +18,7 @@ echo $4 #experiment
 echo "Extracting Process Monitor - This is to monitor the processes that we will run"
 mkdir prmon && tar xf prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz -C prmon --strip-components 1
 echo "Extracting our dataset. This contains the Meerkat Simulated data with 10000 sources in a 2048x2048 image"
-tar -xzvf HPC_data.tar.gz
+cat HPC_data.tar.gz.* | tar xzvf -
 echo "Running prmon"
 ./prmon/bin/prmon -p $$ -i 10 &
 
