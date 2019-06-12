@@ -28,7 +28,7 @@ echo "Lets create a tmp folder to keep temporal files"
 mkdir tmp
 
 echo "Ok! Let's run the container"
-singularity exec --cleanenv -H $PWD:/srv -B $PWD:/srv -W $PWD:/srv/tmp -C shub://miguelcarcamov/container_docker:hpc bash run.sh
+singularity exec --cleanenv -H $PWD:/srv -B $PWD:/srv -W $PWD:/srv -C shub://miguelcarcamov/container_docker:hpc bash run.sh
 
 mv prmon.txt prmon.txt
 ls -ltrh

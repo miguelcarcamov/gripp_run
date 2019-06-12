@@ -38,7 +38,11 @@ echo "Lets create a folder to save the results"
 result_string=results_experiment_$4/
 mkdir -p $result_string
 
+echo "Let's see what in here again!"
+ls -lah
+
 echo "Ok! Let's run the container"
+echo "run2.sh file is going to run with the following parameters: $1 $2 $3 $4 $result_string"
 singularity exec --cleanenv -H $PWD:/srv -B $PWD:/srv -W $PWD:/srv/tmp -C shub://miguelcarcamov/container_docker:hpc bash run2.sh $1 $2 $3 $4 $result_string
 
 mv prmon.txt prmon$2_$3.txt
