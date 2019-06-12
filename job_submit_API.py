@@ -14,14 +14,26 @@ from DIRAC.Interfaces.API.Dirac import Dirac
 from DIRAC.Interfaces.API.Job import Job
 j = Job(stdout='StdOut', stderr='StdErr')
 
-M = sys.argv[1]
-N = sys.argv[2]
+M = int(sys.argv[1])
+N = int(sys.argv[2])
 expmnt = sys.argv[3] #dataset_normal or dataset_midfreq
 nprocs = int(sys.argv[4])
 total_pixels = M*N
 
 lfn = 'LFN:/skatelescope.eu/user/m/miguel.carcamo/'
 lfn_output = lfn + 'second/results_experiment_'+str(expmnt)
+
+parts = 17
+inputdata_list = []
+
+for i in range(parts):
+	if i<10:
+		inputdata_list.append(lfn + 'second/HPC_data.tar.gz.0'+str(i))
+	else:
+		inputdata_list.append(lfn + 'second/HPC_data.tar.gz.'+str(i))
+
+print("Input data list:\n")
+print(inputdata_list)
 for i in range(0,total_pixels, nprocs):
     id_start = i
     id_end = i+nprocs
@@ -32,16 +44,17 @@ for i in range(0,total_pixels, nprocs):
     j.setDestination('LCG.UKI-NORTHGRID-MAN-HEP.uk')
     j.setExecutable('RMSynthesis2.sh', arguments=str(nprocs)+' '+str(id_start)+' '+str(id_end)+' '+str(expmnt))
     # Input data
-    j.setInputData([lfn + 'second/HPC_data.tar.gz'])
+    j.setInputData(inputdata_list)
     j.setInputSandbox(['RMSynthesis2.sh','run2.sh','prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz'])
     # Output data
     j.setOutputSandbox(['StdOut', 'StdErr', 'outputtxt'+str(i)+'.txt', 'prmon'+str(i)+'.txt'])
-    j.setOutputData([lfn_output + '/output_test_'+str(i)+'.npy'], outputSE='UKI-NORTHGRID-MAN-HEP-disk')
+    j.setOutputData([lfn_output + '/LOS_'+str(id_start)+'_to_'+str(id_end)+'.npy'], outputSE='UKI-NORTHGRID-MAN-HEP-disk')
     try:
         diracUsername = getProxyInfo()['Value']['username']
     except:
         print 'Failed to get DIRAC username. No proxy set up?'
         sys.exit(1)
-    j.setJobGroup(diracUsername+'_rmsynthesis_by'+str(nprocs))
+    j.setJobGroup(diracUsername+'_rmsynthesis_by_'+str(nprocs)+'_'+expmnt)
     jobID = dirac.submitJob(j)
     print 'Submission Result: ',jobID
+    print '\n'
