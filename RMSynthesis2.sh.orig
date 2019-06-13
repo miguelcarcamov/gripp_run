@@ -43,8 +43,12 @@ ls -lah
 
 echo "Ok! Let's run the container"
 echo "run2.sh file is going to run with the following parameters: $1 $2 $3 $4 $result_string"
+<<<<<<< HEAD
 
+singularity exec --cleanenv -H $PWD:/srv -B /srv -W /srv -C shub://miguelcarcamov/container_docker:hpc bash run2.sh $1 $2 $3 $4 $result_string
+=======
 singularity exec --cleanenv -H $PWD:/srv --pwd /srv -C shub://miguelcarcamov/container_docker:hpc bash run2.sh $1 $2 $3 $4 $result_string
+>>>>>>> b48d8a3d6f51d52b9d07509aa75d9fe58ff9ae81
 
 mv prmon.txt prmon$2_$3.txt
 ls -ltrh
