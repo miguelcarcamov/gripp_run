@@ -34,9 +34,10 @@ lscpu | grep -E '^Thread|^Core|^Socket|^CPU\('
 echo "Lets create a tmp folder to keep temporal files"
 mkdir -p tmp
 
-echo "Lets create a folder to save the results"
-result_string=results_experiment_$4/
-mkdir -p $result_string
+#echo "Lets create a folder to save the results"
+#result_string=results_experiment_$4/
+result_string=./
+#mkdir -p $result_string
 
 echo "Let's see what in here again!"
 ls -lah
