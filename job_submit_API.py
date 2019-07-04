@@ -36,9 +36,9 @@ print("Input data list:\n")
 print(inputdata_list)
 for i in range(0,total_pixels, nprocs):
     id_start = i
-    id_end = i+nprocs
+    id_end = i + nprocs
     dirac = Dirac()
-    j.setName('CS Faraday Rotation Measurement Reconstruction - Pixels from '+str(id_start)+' to '+str(id_end))
+    j.setName('CS Faraday Rotation Measurement Reconstruction - Pixels from '+str(id_start)+' to '+str(id_end-1))
     j.setPlatform('EL7')
     j.setTag( [str(nprocs)+'Processors'])
     j.setDestination('LCG.UKI-NORTHGRID-MAN-HEP.uk')
@@ -47,9 +47,9 @@ for i in range(0,total_pixels, nprocs):
     j.setInputData(inputdata_list)
     j.setInputSandbox(['RMSynthesis2.sh','run2.sh','prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz'])
     # Output data
-    j.setOutputSandbox(['StdOut', 'StdErr', 'outputtxt_'+str(id_start)+'_'+str(id_end)+'.txt', 'prmon'+str(id_start)+'_'+str(id_end)+'.txt'])
-    #j.setOutputData([lfn_output+'/LOS_'+str(id_start)+'_to_'+str(id_end)+'.npy'], outputSE='UKI-NORTHGRID-MAN-HEP-disk')
-    j.setOutputData(['LOS_'+str(id_start)+'_to_'+str(id_end)+'.npy'], outputSE='UKI-NORTHGRID-MAN-HEP-disk', outputPath='/second/results_experiment_'+str(expmnt))
+    j.setOutputSandbox(['StdOut', 'StdErr', 'outputtxt_'+str(id_start)+'_'+str(id_end-1)+'.txt', 'prmon'+str(id_start)+'_'+str(id_end-1)+'.txt'])
+    #j.setOutputData([lfn_output+'/LOS_'+str(id_start)+'_to_'+str(id_end-1)+'.npy'], outputSE='UKI-NORTHGRID-MAN-HEP-disk')
+    j.setOutputData(['LOS_'+str(id_start)+'_to_'+str(id_end-1)+'.npy'], outputSE='UKI-NORTHGRID-MAN-HEP-disk', outputPath='/second/results_experiment_'+str(expmnt))
     try:
         diracUsername = getProxyInfo()['Value']['username']
     except:
@@ -57,5 +57,5 @@ for i in range(0,total_pixels, nprocs):
         sys.exit(1)
     j.setJobGroup(diracUsername+'_rmsynthesis_by_'+str(nprocs)+'_'+expmnt)
     jobID = dirac.submitJob(j)
-    print 'Submission Result: ',jobID
+    print 'Submission Result: ',j._toJDL()
     print '\n'

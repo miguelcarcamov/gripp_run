@@ -31,8 +31,8 @@ ls -lah
 echo "Let's see how many processors our machine has"
 lscpu | grep -E '^Thread|^Core|^Socket|^CPU\('
 
-echo "Lets create a tmp folder to keep temporal files"
-mkdir -p tmp
+#echo "Lets create a tmp folder to keep temporal files"
+#mkdir -p tmp
 
 #echo "Lets create a folder to save the results"
 #result_string=results_experiment_$4/
@@ -43,9 +43,18 @@ echo "Let's see what in here again!"
 ls -lah
 
 echo "Ok! Let's run the container"
+
+chmod +x run2.sh
+
+rm -rf .singularity
+
+rm -rf *.simg
+echo "Pulling the image from Singularity Hub"
+singularity pull --name hpc_container.simg shub://miguelcarcamov/container_docker:hpc
+
 echo "run2.sh file is going to run with the following parameters: $1 $2 $3 $4 $result_string"
+singularity exec --cleanenv -H $PWD:/srv --pwd /srv -C hpc_container.simg bash run2.sh $1 $2 $3 $4 $result_string
 
-singularity exec --cleanenv -H $PWD:/srv --pwd /srv -C shub://miguelcarcamov/container_docker:hpc bash run2.sh $1 $2 $3 $4 $result_string
-
-mv prmon.txt prmon$2_$3.txt
+real_n=$(($3-1))
+mv prmon.txt prmon$2_$real_n.txt
 ls -ltrh
