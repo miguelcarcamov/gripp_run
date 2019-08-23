@@ -31,7 +31,8 @@ for i in range(parts):
 		inputdata_list.append(lfn + 'second/HPC_data.tar.gz.0'+str(i))
 	else:
 		inputdata_list.append(lfn + 'second/HPC_data.tar.gz.'+str(i))
-
+SitesList = ['LCG.UKI-NORTHGRID-MAN-HEP.uk', 'LCG.UKI-LT2-IC-HEP.uk', 'LCG.UKI-LT2-QMUL.uk', 'LCG.UKI-NORTHGRID-LANCS-HEP.uk']
+SEList = ['UKI-NORTHGRID-MAN-HEP-disk', 'UKI-LT2-IC-HEP-disk', 'UKI-LT2-QMUL2-HEP-disk', 'UKI-NORTHGRID-LANCS-HEP-disk']
 print("Input data list:\n")
 print(inputdata_list)
 for i in range(0,total_pixels, nprocs):
@@ -41,7 +42,7 @@ for i in range(0,total_pixels, nprocs):
     j.setName('CS Faraday Rotation Measurement Reconstruction - Pixels from '+str(id_start)+' to '+str(id_end-1))
     j.setPlatform('EL7')
     j.setTag( [str(nprocs)+'Processors'])
-    j.setDestination('LCG.UKI-NORTHGRID-MAN-HEP.uk')
+    j.setDestination(SitesList)
     j.setExecutable('RMSynthesis2.sh', arguments=str(nprocs)+' '+str(id_start)+' '+str(id_end)+' '+str(expmnt))
     # Input data
     j.setInputData(inputdata_list)
@@ -49,7 +50,7 @@ for i in range(0,total_pixels, nprocs):
     # Output data
     j.setOutputSandbox(['StdOut', 'StdErr', 'outputtxt_'+str(id_start)+'_'+str(id_end-1)+'.txt', 'prmon'+str(id_start)+'_'+str(id_end-1)+'.txt'])
     #j.setOutputData([lfn_output+'/LOS_'+str(id_start)+'_to_'+str(id_end-1)+'.npy'], outputSE='UKI-NORTHGRID-MAN-HEP-disk')
-    j.setOutputData(['LOS_'+str(id_start)+'_to_'+str(id_end-1)+'.npy'], outputSE='UKI-NORTHGRID-MAN-HEP-disk', outputPath='/second/results_experiment_'+str(expmnt))
+    j.setOutputData(['LOS_'+str(id_start)+'_to_'+str(id_end-1)+'.npy'], outputSE=SEList, outputPath='/second/results_experiment_'+str(expmnt))
     try:
         diracUsername = getProxyInfo()['Value']['username']
     except:
