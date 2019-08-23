@@ -18,6 +18,7 @@ M = int(sys.argv[1])
 N = int(sys.argv[2])
 expmnt = sys.argv[3] #dataset_normal or dataset_midfreq
 nprocs = int(sys.argv[4])
+chunks = int(sys.argv[5])
 total_pixels = M*N
 
 lfn = 'LFN:/skatelescope.eu/user/m/miguel.carcamo/'
@@ -35,13 +36,13 @@ SitesList = ['LCG.UKI-NORTHGRID-MAN-HEP.uk', 'LCG.UKI-LT2-IC-HEP.uk', 'LCG.UKI-L
 SEList = ['UKI-NORTHGRID-MAN-HEP-disk', 'UKI-LT2-IC-HEP-disk', 'UKI-LT2-QMUL2-HEP-disk', 'UKI-NORTHGRID-LANCS-HEP-disk']
 print("Input data list:\n")
 print(inputdata_list)
-for i in range(0,total_pixels, nprocs):
+for i in range(0,total_pixels, chunks):
     id_start = i
-    id_end = i + nprocs
+    id_end = i + chunks
     dirac = Dirac()
     j.setName('CS Faraday Rotation Measurement Reconstruction - Pixels from '+str(id_start)+' to '+str(id_end-1))
     j.setPlatform('EL7')
-    j.setTag( [str(nprocs)+'Processors'])
+    j.setTag( ['8Processors'])
     j.setDestination(SitesList)
     j.setExecutable('RMSynthesis2.sh', arguments=str(nprocs)+' '+str(id_start)+' '+str(id_end)+' '+str(expmnt))
     # Input data
