@@ -33,7 +33,7 @@ for i in range(parts):
 	else:
 		inputdata_list.append(lfn + 'second/HPC_data.tar.gz.'+str(i))
 SitesList = ['LCG.UKI-NORTHGRID-MAN-HEP.uk', 'LCG.UKI-LT2-IC-HEP.uk', 'LCG.UKI-LT2-QMUL.uk', 'LCG.UKI-NORTHGRID-LANCS-HEP.uk']
-SEList = ['UKI-NORTHGRID-MAN-HEP-disk', 'UKI-LT2-IC-HEP-disk', 'UKI-LT2-QMUL2-HEP-disk', 'UKI-NORTHGRID-LANCS-HEP-disk']
+SEList = ['UKI-NORTHGRID-MAN-HEP-disk', 'UKI-LT2-IC-HEP-disk', 'UKI-LT2-QMUL2-disk', 'UKI-NORTHGRID-LANCS-HEP-disk']
 print("Input data list:\n")
 print(inputdata_list)
 for i in range(0,total_pixels, chunks):
@@ -42,7 +42,7 @@ for i in range(0,total_pixels, chunks):
     dirac = Dirac()
     j.setName('CS Faraday Rotation Measurement Reconstruction - Pixels from '+str(id_start)+' to '+str(id_end-1))
     j.setPlatform('EL7')
-    j.setTag( ['8Processors'])
+    j.setTag( [str(nprocs)+'Processors'])
     j.setDestination(SitesList)
     j.setExecutable('RMSynthesis2.sh', arguments=str(nprocs)+' '+str(id_start)+' '+str(id_end)+' '+str(expmnt))
     # Input data
@@ -57,7 +57,7 @@ for i in range(0,total_pixels, chunks):
     except:
         print 'Failed to get DIRAC username. No proxy set up?'
         sys.exit(1)
-    j.setJobGroup(diracUsername+'_rmsynthesis_by_'+str(nprocs)+'_'+expmnt)
+    j.setJobGroup('rmsynthesis_by_'+expmnt)
     jobID = dirac.submitJob(j)
     print 'Submission Result: ',j._toJDL()
     print '\n'

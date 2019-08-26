@@ -16,11 +16,11 @@ for i in range(parts):
 inputdata_list.append(lfn + 'second/'+'run2.sh')
 inputdata_list.append(lfn + 'second/'+'RMSynthesis2.sh')
 
-SEList = ['UKI-LT2-IC-HEP-disk', 'UKI-LT2-QMUL2-HEP-disk', 'UKI-NORTHGRID-LANCS-HEP-disk']
+SEList = ['UKI-LT2-IC-HEP-disk', 'UKI-LT2-QMUL2-disk', 'UKI-NORTHGRID-LANCS-HEP-disk']
 source = 'UKI-NORTHGRID-MAN-HEP-disk'
 
 for stel in SEList:
 	for inp_data in inputdata_list:
-		command = 'dirac-dms-replicate-lfn '+inp_data+' '+stel+' '+source
+		command = 'dirac-dms-replicate-lfn '+inp_data+' '+stel
 		print command
 		os.system(command)

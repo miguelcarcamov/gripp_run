@@ -49,8 +49,14 @@ chmod +x run2.sh
 rm -rf .singularity
 
 rm -rf *.simg
+
+rm -rf rm_synthesis_simple
+
+git clone https://github.com/miguelcarcamov/rm_synthesis_simple.git
+
 echo "Pulling the image from Singularity Hub"
-singularity pull --name hpc_container.simg shub://miguelcarcamov/container_docker:hpc
+####singularity pull --name hpc_container.simg shub://miguelcarcamov/container_docker:hpc
+singularity pull --name hpc_container.simg docker://miguelcarcamov/rm_synthesis:latest
 
 echo "run2.sh file is going to run with the following parameters: $1 $2 $3 $4 $result_string"
 singularity exec --cleanenv -H $PWD:/srv --pwd /srv -C hpc_container.simg bash run2.sh $1 $2 $3 $4 $result_string
