@@ -54,7 +54,6 @@ rm -rf rm_synthesis_simple
 
 git clone https://github.com/miguelcarcamov/rm_synthesis_simple.git
 
-
 echo "The image is in /cvmfs/sw.skatelescope.eu/images/RMSynthesisTest.simg"
 
 echo "run2.sh file is going to run with the following parameters: $1 $2 $3 $4 $result_string"
