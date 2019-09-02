@@ -6,6 +6,8 @@ Created on Wed May 22 22:18:54 2019
 @author: miguel
 """
 import sys
+import os
+import subprocess
 from DIRAC.Core.Base import Script
 Script.parseCommandLine()
 
@@ -50,7 +52,13 @@ for i in range(0,total_pixels, chunks):
     j.setInputSandbox(['RMSynthesis2.sh','run2.sh','prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz'])
     # Output data
     j.setOutputSandbox(['StdOut', 'StdErr', 'outputtxt_'+str(id_start)+'_'+str(id_end-1)+'.txt', 'prmon'+str(id_start)+'_'+str(id_end-1)+'.txt'])
-    #j.setOutputData([lfn_output+'/LOS_'+str(id_start)+'_to_'+str(id_end-1)+'.npy'], outputSE='UKI-NORTHGRID-MAN-HEP-disk')
+    o_data_file = lfn + 'second/results_experiment_'+str(expmnt)+'/'+'LOS_'+str(id_start)+'_to_'+str(id_end-1)+'.npy'
+    try:
+    	output_process = subprocess.check_output('dirac-dms-remove-files '+o_data_file, stderr=subprocess.STDOUT, shell=True)
+    except subprocess.CalledProcessError as e:
+	print 'Failed: '+ str(e.returncode) +' '+ e.output
+    else:
+	print "Output: ", output_process
     j.setOutputData(['LOS_'+str(id_start)+'_to_'+str(id_end-1)+'.npy'], outputSE=SEList, outputPath='/second/results_experiment_'+str(expmnt))
     try:
         diracUsername = getProxyInfo()['Value']['username']

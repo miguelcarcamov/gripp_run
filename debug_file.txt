@@ -1,0 +1,75 @@
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for VO skatelescope.eu
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for operation 'None'
+The Storage Element name is UKI-NORTHGRID-LANCS-HEP-disk.
+Determining whether UKI-NORTHGRID-LANCS-HEP-disk ( destination ) is Write-banned.
+determining status of UKI-NORTHGRID-LANCS-HEP-disk.
+determining status of UKI-NORTHGRID-MAN-HEP-disk.
+Determining if the StorageElement UKI-NORTHGRID-MAN-HEP-disk is valid for VO skatelescope.eu
+Determining if the StorageElement UKI-NORTHGRID-MAN-HEP-disk is valid for operation 'None'
+preparing the execution of getFileSize
+Attempting to perform 'getFileSize' operation with 1 lfns.
+Determining if the StorageElement UKI-NORTHGRID-MAN-HEP-disk is valid for VO skatelescope.eu
+Determining if the StorageElement UKI-NORTHGRID-MAN-HEP-disk is valid for operation 'getFileSize'
+determining status of UKI-NORTHGRID-MAN-HEP-disk.
+Determining whether UKI-NORTHGRID-MAN-HEP-disk is a local SE.
+Generating 1 protocol URLs for GFAL2_SRM2.
+generating url dict for 1 lfn in UKI-NORTHGRID-MAN-HEP-disk.
+Attempting to perform 'getFileSize' for 1 physical files
+Getting accessUrl (srm) for lfn in UKI-NORTHGRID-MAN-HEP-disk.
+preparing the execution of getTransportURL
+Attempting to perform 'getTransportURL' operation with 1 lfns.
+Determining if the StorageElement UKI-NORTHGRID-MAN-HEP-disk is valid for VO skatelescope.eu
+Determining if the StorageElement UKI-NORTHGRID-MAN-HEP-disk is valid for operation 'getTransportURL'
+Generating 1 protocol URLs for GFAL2_SRM2.
+generating url dict for 1 lfn in UKI-NORTHGRID-MAN-HEP-disk.
+Attempting to perform 'getTransportURL' for 1 physical files
+Getting accessUrl (srm) for lfn in UKI-NORTHGRID-LANCS-HEP-disk.
+preparing the execution of getTransportURL
+Attempting to perform 'getTransportURL' operation with 1 lfns.
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for VO skatelescope.eu
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for operation 'getTransportURL'
+Generating 1 protocol URLs for GFAL2_SRM2.
+generating url dict for 1 lfn in UKI-NORTHGRID-LANCS-HEP-disk.
+Attempting to perform 'getTransportURL' for 1 physical files
+preparing the execution of putFile
+Attempting to perform 'putFile' operation with 1 lfns.
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for VO skatelescope.eu
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for operation 'putFile'
+determining status of UKI-NORTHGRID-LANCS-HEP-disk.
+Determining whether UKI-NORTHGRID-LANCS-HEP-disk is a local SE.
+Generating 1 protocol URLs for GFAL2_SRM2.
+generating url dict for 1 lfn in UKI-NORTHGRID-LANCS-HEP-disk.
+Attempting to perform 'putFile' for 1 physical files
+Getting accessUrl (root) for lfn in UKI-NORTHGRID-MAN-HEP-disk.
+preparing the execution of getTransportURL
+Attempting to perform 'getTransportURL' operation with 1 lfns.
+Determining if the StorageElement UKI-NORTHGRID-MAN-HEP-disk is valid for VO skatelescope.eu
+Determining if the StorageElement UKI-NORTHGRID-MAN-HEP-disk is valid for operation 'getTransportURL'
+Generating 1 protocol URLs for GFAL2_SRM2.
+generating url dict for 1 lfn in UKI-NORTHGRID-MAN-HEP-disk.
+Attempting to perform 'getTransportURL' for 1 physical files
+Getting accessUrl (root) for lfn in UKI-NORTHGRID-LANCS-HEP-disk.
+preparing the execution of getTransportURL
+Attempting to perform 'getTransportURL' operation with 1 lfns.
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for VO skatelescope.eu
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for operation 'getTransportURL'
+Generating 1 protocol URLs for GFAL2_SRM2.
+generating url dict for 1 lfn in UKI-NORTHGRID-LANCS-HEP-disk.
+Attempting to perform 'getTransportURL' for 1 physical files
+Generating 1 protocol URLs for GFAL2_XROOT.
+generating url dict for 1 lfn in UKI-NORTHGRID-LANCS-HEP-disk.
+Attempting to perform 'getTransportURL' for 1 physical files
+preparing the execution of putFile
+Attempting to perform 'putFile' operation with 1 lfns.
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for VO skatelescope.eu
+Determining if the StorageElement UKI-NORTHGRID-LANCS-HEP-disk is valid for operation 'putFile'
+determining status of UKI-NORTHGRID-LANCS-HEP-disk.
+Determining whether UKI-NORTHGRID-LANCS-HEP-disk is a local SE.
+Generating 1 protocol URLs for GFAL2_XROOT.
+generating url dict for 1 lfn in UKI-NORTHGRID-LANCS-HEP-disk.
+Attempting to perform 'putFile' for 1 physical files
+Generating 1 protocol URLs for GFAL2_SRM2.
+generating url dict for 1 lfn in UKI-NORTHGRID-LANCS-HEP-disk.
+Attempting to perform 'putFile' for 1 physical files
+Problem during replicateFile call
+ERROR Completely failed to replicate file. Failed to replicate with all sources.
