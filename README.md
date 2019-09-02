@@ -22,5 +22,5 @@ Since the input data has two simulated MeerKAT datasets that consist in two cube
 
 ## Lines of sight ID
 
-The IDs of the output files on each depend of what chunk the node will process. For example, if the chunks input argument is 512, then in the first submission, the node will work from ID 0 to ID 511. Then the second will work from 512 to 1023, and so on. Until reach the 2048x2048 lines of sight.
+The IDs of the output files on each node depend of what chunk the node will process. For example, if the chunks input argument is 512, then in the first submission, the node will work from ID 0 to ID 511. Then the second will work from 512 to 1023, and so on. Until reach the 2048x2048=4194304 lines of sight.
 
