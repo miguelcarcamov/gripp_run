@@ -8,6 +8,7 @@ Created on Wed May 22 22:18:54 2019
 import sys
 import os
 import subprocess
+import datetime
 from DIRAC.Core.Base import Script
 Script.parseCommandLine()
 
@@ -16,6 +17,7 @@ from DIRAC.Interfaces.API.Dirac import Dirac
 from DIRAC.Interfaces.API.Job import Job
 j = Job(stdout='StdOut', stderr='StdErr')
 
+timestamp = str(datetime.now())
 M = int(sys.argv[1])
 N = int(sys.argv[2])
 expmnt = sys.argv[3] #dataset_normal or dataset_midfreq
@@ -67,7 +69,7 @@ for i in range(0,total_pixels, chunks):
     except:
         print 'Failed to get DIRAC username. No proxy set up?'
         sys.exit(1)
-    j.setJobGroup('rmsynthesis_by_'+expmnt)
+    j.setJobGroup('rmsynthesis_by_'+expmnt+'_'+timestamp)
     jobID = dirac.submitJob(j)
     print 'Submission Result: ',j._toJDL()
     print '\n'
