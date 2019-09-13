@@ -34,8 +34,10 @@ for i in range(parts):
 		inputdata_list.append(lfn + 'second/HPC_data.tar.gz.0'+str(i))
 	else:
 		inputdata_list.append(lfn + 'second/HPC_data.tar.gz.'+str(i))
-SitesList = ['LCG.UKI-NORTHGRID-MAN-HEP.uk', 'LCG.UKI-LT2-IC-HEP.uk', 'LCG.UKI-LT2-QMUL.uk', 'LCG.UKI-NORTHGRID-LANCS-HEP.uk']
-SEList = ['UKI-NORTHGRID-MAN-HEP-disk', 'UKI-LT2-IC-HEP-disk', 'UKI-LT2-QMUL2-disk', 'UKI-NORTHGRID-LANCS-HEP-disk']
+#SitesList = ['LCG.UKI-NORTHGRID-MAN-HEP.uk', 'LCG.UKI-LT2-IC-HEP.uk', 'LCG.UKI-LT2-QMUL.uk', 'LCG.UKI-NORTHGRID-LANCS-HEP.uk']
+#SEList = ['UKI-NORTHGRID-MAN-HEP-disk', 'UKI-LT2-IC-HEP-disk', 'UKI-LT2-QMUL2-disk', 'UKI-NORTHGRID-LANCS-HEP-disk']
+SitesList = ['LCG.UKI-NORTHGRID-MAN-HEP.uk']
+SEList = ['UKI-NORTHGRID-MAN-HEP-disk']
 print("Input data list:\n")
 print(inputdata_list)
 for i in range(0,total_pixels, chunks):
