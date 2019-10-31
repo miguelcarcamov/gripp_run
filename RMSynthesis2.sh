@@ -14,6 +14,7 @@ echo $1 #nprocs
 echo $2 #id_start
 echo $3 #id_end
 echo $4 #experiment
+echo $5 #job ID
 
 echo "Extracting Process Monitor - This is to monitor the processes that we will run"
 mkdir -p prmon && tar xf prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz -C prmon --strip-components 1
@@ -61,4 +62,5 @@ singularity exec --cleanenv -H $PWD:/srv --pwd /srv -C /cvmfs/sw.skatelescope.eu
 
 real_n=$(($3-1))
 mv prmon.txt prmon$2_$real_n.txt
+mv $6.npy $6_$5.npy
 ls -ltrh
