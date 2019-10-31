@@ -58,6 +58,9 @@ for i in range(0,total_pixels, chunks):
     jdl += 'InputData = {'+ inputdatastr + '};\n'
     jdl += 'InputSandbox = {"RMSynthesis2.sh", "run2.sh", "prmon_1.0.1_x86_64-static-gnu72-opt.tar.gz"};\n'
     # Output data
+    jdl += 'StdOutput = "StdOut";\n';
+    jdl += 'StdError = "StdErr";\n';
+
     jdl += 'OutputSandbox = {"StdOut", "StdErr", '+'"outputtxt_'+str(id_start)+'_'+str(id_end-1)+'.txt",'+'"prmon'+str(id_start)+'_'+str(id_end-1)+'.txt"' + '};\n'
     jdl += 'OutputData = "'+lfn+'/second/test_results_experiment_'+str(expmnt)+'/' + '200' + '/LOS_'+str(id_start)+'_to_'+str(id_end-1)+'_%j.npy";\n'
     jdl += 'OutputSE = "UKI-NORTHGRID-MAN-HEP-disk";\n'
