@@ -26,7 +26,7 @@ chunks = int(sys.argv[5])
 total_pixels = M*N
 
 lfn = 'LFN:/skatelescope.eu/user/m/miguel.carcamo/'
-lfn_output = lfn + 'second/results_experiment_'+str(expmnt)
+lfn_output = lfn + 'second/experiment_'+str(expmnt)
 
 parts = 17
 inputdata_list = []
@@ -62,7 +62,7 @@ for i in range(0,total_pixels, chunks):
     jdl += 'StdError = "StdErr";\n';
 
     jdl += 'OutputSandbox = {"StdOut", "StdErr", '+'"outputtxt_'+str(id_start)+'_'+str(id_end-1)+'.txt",'+'"prmon'+str(id_start)+'_'+str(id_end-1)+'.txt"' + '};\n'
-    jdl += 'OutputData = "'+lfn+'/second/test_results_experiment_'+str(expmnt)+'/' + '200' + '/LOS_'+str(id_start)+'_to_'+str(id_end-1)+'_%j.npy";\n'
+    jdl += 'OutputData = "'+lfn+'second/test_results_experiment_'+str(expmnt)+'/' + '200' + '/LOS_'+str(id_start)+'_to_'+str(id_end-1)+'_%j.npy";\n'
     jdl += 'OutputSE = "UKI-NORTHGRID-MAN-HEP-disk";\n'
     try:
         diracUsername = getProxyInfo()['Value']['username']
